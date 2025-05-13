@@ -1,10 +1,10 @@
-name: Custom issue template
-about: Describe this issue template's purpose here.
-title: ''
-labels: ''
-assignees: ''
-
----
+name: Custom issue template   
+about: Describe this issue template's purpose here.    
+title: ''   
+labels: ''   
+assignees: ''    
+   
+---   
 
 ## ✨ Related Issues
 - 이슈 넘버 #[issue_number]
