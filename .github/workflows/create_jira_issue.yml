@@ -20,7 +20,7 @@ jobs:
         uses: atlassian/gajira-create@v3
         with:
           project: HYUZ
-          issuetype: Epic
+          issuetype: Story
           summary: '${{ github.event.issue.title }}'
           description: 'Automatically created from GitHub issue.'
 
