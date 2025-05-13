@@ -1,4 +1,5 @@
 name: Close Jira issue
+
 on:
   issues:
     types:
@@ -29,4 +30,4 @@ jobs:
         uses: atlassian/gajira-transition@v3
         with:
           issue: ${{ env.JIRA_KEY }}
-          transition: Mark as Done
+          transition: Mark as Done  # ← 여기 Jira에서 설정한 transition 이름과 정확히 일치해야 함
