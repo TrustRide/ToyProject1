@@ -1,12 +1,3 @@
----
-name: issue template
-about: 이슈 템플릿 설정
-title: ''
-labels: ''
-assignees: ''
-
----
-
 ### 📄 Describe
 설명을 적어요.
 
