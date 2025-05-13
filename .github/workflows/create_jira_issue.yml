@@ -1,4 +1,5 @@
 name: Create Jira issue
+
 on:
   issues:
     types: [opened]
@@ -7,6 +8,7 @@ jobs:
   create-issue:
     name: Create Jira issue
     runs-on: ubuntu-latest
+
     steps:
       - name: Login to Jira
         uses: atlassian/gajira-login@v3
@@ -24,12 +26,12 @@ jobs:
           summary: '${{ github.event.issue.title }}'
           description: 'Automatically created from GitHub issue.'
 
-      - name: Checkout develop code
+      - name: Checkout develop branch
         uses: actions/checkout@v4
         with:
           ref: develop
 
-      - name: Create branch with Ticket number
+      - name: Create branch with Jira key
         run: |
           ISSUE_NUMBER="${{ steps.create.outputs.issue }}"
           ISSUE_TITLE="${{ github.event.issue.title }}"
@@ -37,12 +39,23 @@ jobs:
           git checkout -b "$BRANCH_NAME"
           git push origin "$BRANCH_NAME"
 
-      - name: Update issue title
+      - name: Update GitHub issue title to include Jira key
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'update-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           title: '[${{ steps.create.outputs.issue }}] ${{ github.event.issue.title }}'
+
+      - name: Add Jira key to GitHub issue body
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'update-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            Jira Issue Linked: [${{ steps.create.outputs.issue }}](${{ secrets.JIRA_BASE_URL }}/browse/${{ steps.create.outputs.issue }})
+
+            ---
+            ${{ github.event.issue.body }}
 
       - name: Add comment with Jira issue link
         uses: actions-cool/issues-helper@v3
