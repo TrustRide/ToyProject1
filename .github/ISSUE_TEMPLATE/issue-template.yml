@@ -3,8 +3,8 @@ description: 'Repo에 이슈를 생성하며, 생성된 이슈는 Jira와 연동
 labels: []
 title: '이슈 이름을 작성해주세요'
 body:
-  - type: input
-    id: description
+  - id: description
+    type: input
     attributes:
       description: '설명을 적어요.'    
       label: '📄 Describe'
