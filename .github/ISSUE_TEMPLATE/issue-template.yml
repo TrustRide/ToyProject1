@@ -1,0 +1,22 @@
+name: '이슈 생성'
+description: 'Repo에 이슈를 생성하며, 생성된 이슈는 Jira와 연동됩니다.'
+labels: []
+title: '이슈 이름을 작성해주세요'
+body:
+  - type: input
+    id: description
+    attributes:
+    label:'📄 Describe'
+    description:'설명을 적어요.'
+
+  - type: input
+    id: tasks
+    attributes:
+    label:'✅ Tasks'
+    description:'[ ]  투두리스트를 적어요.'
+
+  - type: input
+    id: ref
+    attributes:
+    label:'📋 Ref'
+    description:'추가적인 정보나 참고 문서를 적어요.'  
