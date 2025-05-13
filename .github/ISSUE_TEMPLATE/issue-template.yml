@@ -1,22 +1,22 @@
-name: '이슈 생성'
-description: 'Repo에 이슈를 생성하며, 생성된 이슈는 Jira와 연동됩니다.'
-labels: []
-title: '이슈 이름을 작성해주세요'
-body:
-  - type: input
-    id: description
-    attributes:
-      label: '📄 Describe'
-      placeholder: '설명을 적어요.'
+name: Custom issue template
+about: Describe this issue template's purpose here.
+title: ''
+labels: ''
+assignees: ''
 
-  - type: input
-    id: tasks
-    attributes:
-      label: '✅ Tasks'
-      placeholder: 'To-do List를 적어요.'
+---
 
-  - type: input
-    id: ref
-    attributes:
-      label: '📋 Ref'
-      placeholder: '참고 문서를 적어요.'
+## ✨ Related Issues
+- 이슈 넘버 #[issue_number]
+
+## 📝 Task Details
+
+- 이 곳에 진행한 업무를 작성해주세요!
+
+## 📂 References
+
+- 스크린샷이나 레퍼런스를 넣어주세요!
+
+## 💖 Review Requirements
+
+- 리뷰 요구사항을 적어주세요!
