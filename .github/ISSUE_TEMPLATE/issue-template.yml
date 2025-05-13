@@ -6,8 +6,9 @@ body:
   - type: input
     id: description
     attributes:
+      description: '설명을 적어요.'    
       label: '📄 Describe'
-      description: '설명을 적어요.'
+
 
   - type: input
     id: tasks
