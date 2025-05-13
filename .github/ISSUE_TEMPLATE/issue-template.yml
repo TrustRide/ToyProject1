@@ -7,16 +7,16 @@ body:
     id: description
     attributes:
       label: '📄 Describe'
-      description: '설명을 적어요.'
+      placeholder: '설명을 적어요.'
 
   - type: input
     id: tasks
     attributes:
       label: '✅ Tasks'
-      description: '[ ]  투두리스트를 적어요.'
+      placeholder: 'To-do List를 적어요.'
 
   - type: input
     id: ref
     attributes:
       label: '📋 Ref'
-      description: '추가적인 정보나 참고 문서를 적어요.'
+      placeholder: '참고 문서를 적어요.'
