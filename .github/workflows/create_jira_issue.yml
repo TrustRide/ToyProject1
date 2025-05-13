@@ -2,6 +2,7 @@ name: Create Jira issue
 on:
   issues:
     types: [opened]
+
 jobs:
   create-issue:
     name: Create Jira issue
@@ -13,15 +14,15 @@ jobs:
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          
+
       - name: Create Issue in Jira
         id: create
         uses: atlassian/gajira-create@v3
         with:
-          project: HYUZ  # URL이 아니라 프로젝트 키를 사용해야 함
+          project: HYUZ
           issuetype: Epic
           summary: '${{ github.event.issue.title }}'
-          description: '${{ steps.md2jira.outputs.output-text }}'
+          description: 'Automatically created from GitHub issue.'
 
       - name: Checkout develop code
         uses: actions/checkout@v4
@@ -31,10 +32,10 @@ jobs:
       - name: Create branch with Ticket number
         run: |
           ISSUE_NUMBER="${{ steps.create.outputs.issue }}"
-          ISSUE_TITLE="${{ steps.issue-parser.outputs.issueparser_branch }}"
-          BRANCH_NAME="${ISSUE_NUMBER}-$(echo ${ISSUE_TITLE} | sed 's/ /-/g')"
-          git checkout -b "${BRANCH_NAME}"
-          git push origin "${BRANCH_NAME}"
+          ISSUE_TITLE="${{ github.event.issue.title }}"
+          BRANCH_NAME="${ISSUE_NUMBER}-$(echo "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g')"
+          git checkout -b "$BRANCH_NAME"
+          git push origin "$BRANCH_NAME"
 
       - name: Update issue title
         uses: actions-cool/issues-helper@v3
