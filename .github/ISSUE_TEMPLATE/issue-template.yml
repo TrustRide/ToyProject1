@@ -6,20 +6,17 @@ body:
   - type: input
     id: description
     attributes:
-      label: '📄 Describe - 무엇에 대한 이슈인지 설명을 적어주세요.'
-    validations:
-      required: false
+      label: '📄 Describe'
+      description: '설명을 적어요.'
 
   - type: input
     id: tasks
     attributes:
-      label: '✅ Tasks - 해야 할 일들을 체크박스 형식으로 작성해주세요. 예: [ ] 기능 구현'
-    validations:
-      required: false
+      label: '✅ Tasks'
+      description: '[ ]  투두리스트를 적어요.'
 
   - type: input
     id: ref
     attributes:
-      label: '📋 Ref - 참고할 만한 링크나 문서를 남겨주세요.'
-    validations:
-      required: false
+      label: '📋 Ref'
+      description: '추가적인 정보나 참고 문서를 적어요.'
